@@ -14,16 +14,18 @@ app.use(routes);
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
     if (error instanceof AppError) {
         return response.status(error.statusCode).json({
-            status: 'error',
+            statusCode: error.statusCode,
             message: error.message,
+            error: error.error,
         });
     }
 
     console.error(error);
 
     return response.status(500).json({
-        status: 'error',
-        message: 'Internal server error',
+        statusCode: 500,
+        erro: 'Internal Server Error',
+        message: 'Something went wrong',
     });
 });
 

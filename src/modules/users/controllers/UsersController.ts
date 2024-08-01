@@ -23,6 +23,6 @@ export default class UsersControler {
             password,
         });
 
-        return res.json(user);
+        return res.status(201).json({ message: 'User created' });
     }
 }

@@ -4,6 +4,6 @@ import UsersControler from '../controllers/UsersController';
 const usersRoutes = Router();
 const usersControler = new UsersControler();
 
-usersRoutes.post('/', usersControler.create);
+usersRoutes.post('/sign-up', usersControler.create);
 
 export default usersRoutes;

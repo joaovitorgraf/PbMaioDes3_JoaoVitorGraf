@@ -1,10 +1,12 @@
 class AppError {
-    public readonly message: string;
     public readonly statusCode: number;
+    public readonly message: string;
+    public readonly error: string;
 
-    constructor(message: string, statusCode = 400) {
-        this.message = message;
+    constructor(message: string, error = 'Bad Request', statusCode = 400) {
         this.statusCode = statusCode;
+        this.message = message;
+        this.error = error;
     }
 }
 
