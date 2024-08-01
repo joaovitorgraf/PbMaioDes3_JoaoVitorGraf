@@ -1,16 +1,16 @@
-import AppError from '@shared/errors/AppError'
-import { Request, Response } from "express";
-import CreateUserService from '../services/CreateUserService'
-
+import AppError from '@shared/errors/AppError';
+import { Request, Response } from 'express';
+import CreateUserService from '../services/CreateUserService';
 
 export default class UsersControler {
     public async create(req: Request, res: Response): Promise<Response> {
-        const { firstName, lastName, birthDate, city, country, email, password, confirmPassword } = req.body;
+        const { firstName, lastName, birthDate, city, country, email, password, confirmPassword } =
+            req.body;
 
         const createUser = new CreateUserService();
 
         if (confirmPassword !== password) {
-            throw new AppError('password other than confirmPassword')
+            throw new AppError('password other than confirmPassword');
         }
 
         const user = await createUser.execute({
@@ -20,9 +20,9 @@ export default class UsersControler {
             city,
             country,
             email,
-            password
-        })
+            password,
+        });
 
-        return res.json(user)
+        return res.json(user);
     }
 }
