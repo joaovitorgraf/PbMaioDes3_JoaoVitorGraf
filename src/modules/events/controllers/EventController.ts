@@ -3,6 +3,8 @@ import CreateEventService from '../services/CreateEventService';
 import ListEventService from '../services/ListEventService';
 import { StandardError, ValidationError } from '@shared/errors/AppError';
 import DeleteEventService from '../services/DeleteEventService';
+import ListOneEventService from '../services/ListOneEventService';
+import DeleteOneEventService from '../services/DeleteOneEventService';
 
 const baseDayOfWeek = [
     'sunday',
@@ -10,7 +12,7 @@ const baseDayOfWeek = [
     'tuesday',
     'wednesday',
     'thursday ',
-    'friday ',
+    'friday',
     'saturday',
 ];
 export default class EventControler {
@@ -39,6 +41,16 @@ export default class EventControler {
         });
 
         return res.status(200).json(events);
+    }
+
+    public async listOne(req: Request, res: Response): Promise<Response> {
+        const { id } = req.params;
+
+        const listOneEvent = new ListOneEventService();
+
+        const event = await listOneEvent.execute(id);
+
+        return res.status(200).json(event);
     }
 
     public async create(req: Request, res: Response): Promise<Response> {
@@ -92,6 +104,16 @@ export default class EventControler {
 
         const eventsDelete = await deleteEvent.execute(dayOfWeek);
 
-        return res.status(200).json([eventsDelete]);
+        return res.status(200).json({ deletedEvents: eventsDelete });
+    }
+
+    public async deleteOne(req: Request, res: Response): Promise<Response> {
+        const { id } = req.params;
+
+        const deleteOneEvent = new DeleteOneEventService();
+
+        await deleteOneEvent.execute(id);
+
+        return res.status(204).json();
     }
 }

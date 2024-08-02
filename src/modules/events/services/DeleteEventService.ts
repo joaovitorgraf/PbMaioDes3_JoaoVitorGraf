@@ -8,7 +8,7 @@ class DeleteEventService {
         const countFindEvents = findEvents.length;
 
         if (countFindEvents === 0) {
-            throw new StandardError(`Event ${dayOfWeek} Not found`, 'Not found', 404);
+            throw new StandardError('Not found', 'Not found', 404);
         }
 
         await Event.deleteMany({ dayOfWeek: dayOfWeek });

@@ -6,7 +6,9 @@ const eventsRoutes = Router({ mergeParams: true });
 const eventControler = new EventControler();
 
 eventsRoutes.get('/?', isAuthenticated, eventControler.list);
+eventsRoutes.get('/:id', isAuthenticated, eventControler.listOne);
 eventsRoutes.post('/', isAuthenticated, eventControler.create);
 eventsRoutes.delete('/?', isAuthenticated, eventControler.delete);
+eventsRoutes.delete('/:id', isAuthenticated, eventControler.deleteOne);
 
 export default eventsRoutes;
