@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import { StandardError } from '@shared/errors/AppError';
 import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import LoginUserService from '../services/LoginUserService';
@@ -11,7 +11,7 @@ export default class UsersControler {
         const createUser = new CreateUserService();
 
         if (confirmPassword !== password) {
-            throw new AppError('password other than confirmPassword');
+            throw new StandardError('password other than confirmPassword');
         }
 
         await createUser.execute({
@@ -33,6 +33,9 @@ export default class UsersControler {
         const loginUserService = new LoginUserService();
         const user = await loginUserService.execute({ email, password });
 
-        return res.status(200).json(user);
+        return res
+            .set('Authorization', `Bearer ${user.token}`)
+            .status(200)
+            .json({ firstName: user.firstName, lastName: user.lastName, email: user.email });
     }
 }

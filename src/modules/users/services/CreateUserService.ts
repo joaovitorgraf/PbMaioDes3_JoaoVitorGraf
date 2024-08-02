@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import { StandardError } from '@shared/errors/AppError';
 import User, { IUser } from '@models/User';
 import bcryptjs from 'bcryptjs';
 
@@ -25,7 +25,7 @@ class CreateUserService {
         const emailExists = await User.findOne({ email });
 
         if (emailExists) {
-            throw new AppError('Email address already used.');
+            throw new StandardError('Email address already used.');
         }
 
         const hashedPassword = await bcryptjs.hashSync(password, 8);

@@ -1,7 +1,8 @@
-import AppError from '@shared/errors/AppError';
-import User, { IUser } from '@models/User';
+import { ValidationError } from '@shared/errors/AppError';
+import User from '@models/User';
 import bcryptjs from 'bcryptjs';
-
+import jsonwebtoken from 'jsonwebtoken';
+import authConfig from '@config/auth';
 interface IReq {
     email: string;
     password: string;
@@ -11,6 +12,7 @@ interface IRes {
     firstName: string;
     lastName: string;
     email: string;
+    token: string;
 }
 
 class LoginUserService {
@@ -18,16 +20,26 @@ class LoginUserService {
         const user = await User.findOne({ email });
 
         if (!user) {
-            throw new AppError('Incorrect email/password combination.');
+            throw new ValidationError('Validation Error', 'email', 'invalid email');
         }
 
         const passwordConfirmed = await bcryptjs.compare(password, user.password);
 
         if (!passwordConfirmed) {
-            throw new AppError('Incorrect email/password combination.');
+            throw new ValidationError('Validation Error', 'email', 'invalid email');
         }
 
-        return { firstName: user.firstName, lastName: user.lastName, email: user.email };
+        const token = jsonwebtoken.sign({}, authConfig.jwt.secret, {
+            subject: user.id,
+            expiresIn: authConfig.jwt.expiresIn,
+        });
+
+        return {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            token: token,
+        };
     }
 }
 
