@@ -1,9 +1,17 @@
 import Event, { IEvent } from '@models/Event';
 import { StandardError } from '@shared/errors/AppError';
 
+interface IReq {
+    dayOfWeek: string;
+    description: string;
+}
+
 class ListEventService {
-    public async execute(): Promise<IEvent[]> {
-        const events = await Event.find({});
+    public async execute({ dayOfWeek, description }: IReq): Promise<IEvent[]> {
+        const events = await Event.find({
+            dayOfWeek: dayOfWeek,
+            description: description,
+        });
 
         const eventsCount = events.length;
 
