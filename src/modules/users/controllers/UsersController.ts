@@ -1,6 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
+import LoginUserService from '../services/LoginUserService';
 
 export default class UsersControler {
     public async create(req: Request, res: Response): Promise<Response> {
@@ -13,7 +14,7 @@ export default class UsersControler {
             throw new AppError('password other than confirmPassword');
         }
 
-        const user = await createUser.execute({
+        await createUser.execute({
             firstName,
             lastName,
             birthDate,
@@ -24,5 +25,14 @@ export default class UsersControler {
         });
 
         return res.status(201).json({ message: 'User created' });
+    }
+
+    public async login(req: Request, res: Response): Promise<Response> {
+        const { email, password } = req.body;
+
+        const loginUserService = new LoginUserService();
+        const user = await loginUserService.execute({ email, password });
+
+        return res.status(200).json(user);
     }
 }
