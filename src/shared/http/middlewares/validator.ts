@@ -1,10 +1,11 @@
 import createHttpError from 'http-errors';
 import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
-import { loginSchema } from '@validators/index';
+import { signInSchema, signUpSchema } from '@validators/index';
 
 const Validators = {
-    loginSchema,
+    signInSchema,
+    signUpSchema,
 };
 
 type ValidatorKey = keyof typeof Validators;

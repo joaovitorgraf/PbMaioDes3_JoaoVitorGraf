@@ -1,3 +1,4 @@
-import loginSchema from './login.validator';
+import signInSchema from './signIn.validator';
+import signUpSchema from './signUp.validator';
 
-export { loginSchema };
+export { signInSchema, signUpSchema };
