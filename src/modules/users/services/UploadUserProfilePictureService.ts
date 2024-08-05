@@ -17,6 +17,7 @@ class UploadUserProfilePictureService {
                 Bucket: BUCKET_NAME,
                 Key: `profile-picture/${fileName}`,
                 ContentType: fileType,
+                ACL: 'public-read',
             });
 
             const uploadURL = await getSignedUrl(s3, command, { expiresIn: 3600 });
