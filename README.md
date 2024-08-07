@@ -7,7 +7,7 @@ Resolução do desafio proposto para a trilha de aprendizado Back-end Journey (N
 -   [Descrição do desafio](#descrição-do-desafio)
     -   [Funcionalidades](#funcionalidades)
     -   [Regras de negócio](#regras-de-negócio)
--   [Nosso projeto](#nosso-projeto)
+-   [Projeto](#projeto)
     -   [Stack de desenvolvimento utilizada](#stack-de-desenvolvimento-utilizada)
     -   [Rotas](#rotas)
     -   [Payloads](#payloads)
@@ -40,7 +40,7 @@ O projeto consiste no desenvolvimento de uma API REST com funcionalidades de CRU
         -   message : Mensagem de erro
         -   erro : Tipo do erro
 
-## Nosso projeto
+## Projeto
 
 ### Stack de desenvolvimento utilizada
 
