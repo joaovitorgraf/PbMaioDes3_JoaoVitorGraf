@@ -5,9 +5,10 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(eslint.configs.recommended, ...tseslint.configs.recommended, {
     rules: {
-        //'no-console': 'error'
+        'no-console': 'error',
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-        'prettier/prettier': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-prototype-builtins': 'off',
     },
 });

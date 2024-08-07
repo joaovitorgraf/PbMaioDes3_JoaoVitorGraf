@@ -50,8 +50,6 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
         });
     }
 
-    console.error(error);
-
     return response.status(500).json({
         statusCode: 500,
         error: 'Internal Server Error',
@@ -59,6 +57,4 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
     });
 });
 
-app.listen(process.env.PORT, () => {
-    console.log('Server started on port 3000! 🏆');
-});
+app.listen(process.env.PORT);
