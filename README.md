@@ -1,4 +1,4 @@
-# Desafio #3 - Projeto Semana 12 Node & AWS 🎥
+# Desafio #3 - Projeto Semana 12 Node & AWS
 
 Resolução do desafio proposto para a trilha de aprendizado Back-end Journey (Node.js) da Compass UOL
 
