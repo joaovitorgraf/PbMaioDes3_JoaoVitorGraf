@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - APP_SECRET=81ca77138f6d28ed011a9dff6b4a5b8f
+      - PORT=3000
+      - APP_API_URL=http://localhost:3000
+      - MONGODB_URI=mongodb://mongodb:27017/desafio
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

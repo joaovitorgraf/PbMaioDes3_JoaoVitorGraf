@@ -57,4 +57,6 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
     });
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log('serveon');
+});

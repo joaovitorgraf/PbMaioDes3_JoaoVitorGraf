@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "dev": "tsx watch src/shared/http/server.ts",
+    "start": "tsx watch src/shared/http/server.ts",
     "lint": "npx eslint ."
   },
   "author": "",
