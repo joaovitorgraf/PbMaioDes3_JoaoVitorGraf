@@ -53,46 +53,6 @@ O projeto consiste no desenvolvimento de uma API REST com funcionalidades de CRU
 
 ### Rotas
 
-<aside>
-> base_url → localhost:3000/
-
-</aside>
-
-<aside>
-> users/sign-in → criar usuário
-
-</aside>
-
-<aside>
-> /users/sign-up → login
-
-</aside>
-
-<aside>
-> /users/generate-upload-url?fileName=image.png&fileType=image/png → gerar URL pré-assinada
-
-</aside>
-
-<aside>
-> /events → criar evento
-
-</aside>
-
-<aside>
-> /events?dayOfWeek=sunday&description=descrição → listar eventos com a mesma descrição e dia da semana
-
-</aside>
-
-<aside>
-> /events?dayOfWeek=sunday → deletar todos os eventos com o mesmo dia da semana
-
-</aside>
-
-<aside>
-> /events/{event_id} → deletar ou listar um único evento
-
-</aside>
-
 -   Users (usuários)
 
     | ROTA                                | MÉTODO |
