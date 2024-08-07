@@ -69,6 +69,11 @@ O projeto consiste no desenvolvimento de uma API REST com funcionalidades de CRU
 </aside>
 
 <aside>
+> /users/generate-upload-url?fileName=image.png&fileType=image/png → gerar URL pré-assinada
+
+</aside>
+
+<aside>
 > /events → criar evento
 
 </aside>
@@ -90,10 +95,11 @@ O projeto consiste no desenvolvimento de uma API REST com funcionalidades de CRU
 
 -   Users (usuários)
 
-    | ROTA                   | MÉTODO |
-    | ---------------------- | ------ |
-    | base_url/users/sign-up | POST   |
-    | base_url/users/sign-in | POST   |
+    | ROTA                                | MÉTODO |
+    | ----------------------------------- | ------ |
+    | base_url/users/sign-up              | POST   |
+    | base_url/users/sign-in              | POST   |
+    | base_url/users/generate-upload-url? | GET    |
 
 -   Event (eventos)
 
@@ -144,6 +150,18 @@ O projeto consiste no desenvolvimento de uma API REST com funcionalidades de CRU
         "firstName": "string",
         "lastName": "string",
         "email": "string"
+    }
+    ```
+
+    -   request GET:
+
+    `base_url/generate-upload-url?fileName=bandeira2.png&fileType=image/png`
+
+    -   reponse GET:
+
+    ```json
+    {
+        "uploadURL": "https://..."
     }
     ```
 
