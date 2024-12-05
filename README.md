@@ -182,6 +182,6 @@ S3_BUCKET_NAME=
 ```
 
 -   Abrir novo terminal e executar o comando `npm install` para instalar as dependências do projeto
--   Executar o comando `npm run dev` para inicializar a aplicação
+-   Executar o comando `npm start` para inicializar a aplicação
 -   Utilizando o Insomnia, criar as HTTP requests com as rotas especificadas no tópico Rotas e preencher o body (JSON) de acordo com os campos solicitados no tópico Payloads
 -   Os testes são executados pelo comando `npm run test`
